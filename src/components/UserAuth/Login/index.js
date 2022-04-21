@@ -1,20 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import api from "../../../services/api";
 import { ThreeDots } from "react-loader-spinner";
 import { Container, TitleScreen, Form, Input, StyledLink } from "../style";
 import logotipo from "../../../assets/logotipo.png";
 import Button from "@mui/material/Button";
+import useAuth from "../../../hooks/userAuth";
 
 function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    username: "",
-    pictureUrl: "",
   });
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   function handleChange({ target }) {
     setFormData({ ...formData, [target.name]: target.value });
@@ -33,18 +33,29 @@ function Login() {
     });
 
     try {
-      await api.Login(user);
+      const { data } = await api.signIn(user);
+      login(data);
+
       setIsLoading(false);
-      navigate("/");
+      navigate("/exams");
     } catch (error) {
-      if (error.response.status === 409) {
-        alert("E-mail already in use");
-        setIsLoading(false);
+      if (error.response.status === 401)
+        alert("Email or password incorrect, please try again");
+      else {
+        alert(`Please check your login info or try again later`);
       }
+
+      setIsLoading(false);
+
       console.log(error);
       alert("Please try again");
     }
   }
+
+  useEffect(() => {
+    const token = JSON.parse(localStorage.getItem("auth"));
+    if (token) navigate("/exams");
+  }, []);
 
   return (
     <Container>
@@ -81,7 +92,7 @@ function Login() {
               width={50}
             />
           ) : (
-            "Cadastrar"
+            "Entrar"
           )}
         </Button>
         <div>
