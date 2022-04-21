@@ -14,9 +14,9 @@ async function signUp(user) {
   await axios.post(`${BASE_URL}/sing-up`, user);
 }
 async function signIn(email, password) {
-  const loginInfo = { email: email, password: password };
-  const token = await axios.post(`${BASE_URL}/login`, loginInfo);
-  return token;
+  // const loginInfo = { email: email, password: password };
+  // const token = await axios.post(`${BASE_URL}/login`, loginInfo);
+  // return token;
 }
 
 const api = {

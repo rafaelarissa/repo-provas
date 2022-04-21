@@ -55,7 +55,7 @@ const Form = styled.form`
 
   button {
     background-color: #3f51b5;
-    margin: 18px;
+    margin: 15px 0;
   }
 
   @media (max-width: 430px) {
@@ -85,4 +85,27 @@ const Input = styled.input`
   }
 `;
 
-export { Container, Form, Input, TitleScreen, StyledLink };
+const Divider = styled.div`
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+
+  width: 100%;
+  padding: 25px 0;
+
+  .linha {
+    width: 50%;
+    height: 1px;
+    background-color: #434343;
+  }
+
+  .texto {
+    position: absolute;
+    left: 50%;
+    transform: translateY(-50%);
+    color: black;
+    color: #d4d4d4;
+  }
+`;
+
+export { Container, Form, Input, TitleScreen, StyledLink, Divider };

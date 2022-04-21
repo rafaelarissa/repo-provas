@@ -2,7 +2,14 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import api from "../../../services/api";
 import { ThreeDots } from "react-loader-spinner";
-import { Container, TitleScreen, Form, Input, StyledLink } from "../style";
+import {
+  Container,
+  TitleScreen,
+  Form,
+  Input,
+  StyledLink,
+  Divider,
+} from "../style";
 import logotipo from "../../../assets/logotipo.png";
 import Button from "@mui/material/Button";
 
@@ -55,6 +62,11 @@ function SignUp() {
       </TitleScreen>
       <Form onSubmit={handleSignUp}>
         <Button variant="contained">Entrar com o github</Button>
+        <Divider>
+          <div class="linha"></div>
+          <div class="texto">ou</div>
+          <div class="linha"></div>
+        </Divider>
 
         <Input
           placeholder="Email"

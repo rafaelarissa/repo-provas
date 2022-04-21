@@ -2,7 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import api from "../../../services/api";
 import { ThreeDots } from "react-loader-spinner";
-import { Container, TitleScreen, Form, Input, StyledLink } from "../style";
+import {
+  Container,
+  TitleScreen,
+  Form,
+  Input,
+  StyledLink,
+  Divider,
+} from "../style";
 import logotipo from "../../../assets/logotipo.png";
 import Button from "@mui/material/Button";
 import useAuth from "../../../hooks/userAuth";
@@ -14,7 +21,7 @@ function Login() {
     password: "",
   });
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const login = useAuth();
 
   function handleChange({ target }) {
     setFormData({ ...formData, [target.name]: target.value });
@@ -37,7 +44,6 @@ function Login() {
       login(data);
 
       setIsLoading(false);
-      navigate("/exams");
     } catch (error) {
       if (error.response.status === 401)
         alert("Email or password incorrect, please try again");
@@ -66,6 +72,11 @@ function Login() {
       </TitleScreen>
       <Form onSubmit={handleLogin}>
         <Button variant="contained">Entrar com o github</Button>
+        <Divider>
+          <div class="linha"></div>
+          <div class="texto">ou</div>
+          <div class="linha"></div>
+        </Divider>
 
         <Input
           placeholder="Email"
