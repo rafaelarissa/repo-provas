@@ -17,11 +17,11 @@ const Container = styled.div`
 
 const TitleScreen = styled.div`
   display: flex;
-
   margin: 50px;
+
   @media (max-width: 430px) {
-    height: 175px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    height: 165px;
+    margin: 0;
   }
 `;
 
@@ -60,7 +60,6 @@ const Form = styled.form`
 
   @media (max-width: 430px) {
     width: 90%;
-    margin-top: 40px;
     justify-content: start;
     padding: 0px;
   }

@@ -18,8 +18,7 @@ function SignUp() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    username: "",
-    pictureUrl: "",
+    checkPassword: "",
   });
   const navigate = useNavigate();
 
@@ -31,6 +30,10 @@ function SignUp() {
     e.preventDefault();
     setIsLoading(true);
 
+    if (formData.password !== formData.checkPassword)
+      return alert("Passwords must match! Refresh and try again");
+
+    delete formData.checkPassword;
     const user = { ...formData };
 
     Object.keys(user).forEach((item) => {
@@ -86,9 +89,9 @@ function SignUp() {
         />
         <Input
           placeholder="Confirme a senha"
-          type="text"
+          type="password"
           onChange={(e) => handleChange(e)}
-          name="username"
+          name="checkPassword"
           value={formData.checkPassword}
           required
         />

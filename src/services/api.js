@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http:ocalhost:5000";
+const BASE_URL = "http://localhost:5000";
 
 function authData(token) {
   return {
@@ -11,7 +11,7 @@ function authData(token) {
 }
 
 async function signUp(user) {
-  await axios.post(`${BASE_URL}/sing-up`, user);
+  await axios.post(`${BASE_URL}/sign-up`, user);
 }
 async function signIn(email, password) {
   // const loginInfo = { email: email, password: password };
